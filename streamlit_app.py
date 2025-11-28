@@ -75,27 +75,6 @@ def get_answer(health_status):
     )
     return response.choices[0].message.content
 
-
-def answer_to_result(answer):
-    try:
-        meds = json.loads(answer)
-    except json.JSONDecodeError as e:
-        # JSON 형식이 아니면 여기서 앱이 죽지 않도록 막음
-        st.error(f"모델 응답을 JSON으로 파싱하는 데 실패했습니다: {e}")
-        st.subheader("원본 모델 응답")
-        st.code(answer, language="json")
-        return []
-
-    st.markdown("### --- 추천 다이어트 루틴 ---")
-    for med_dict in meds:
-        for med_name, med_effect in med_dict.items():
-            line = f"{med_name}: {med_effect}"
-            # 터미널용 출력은 유지 (혹시 나중에 CLI 쓸 수도 있으니까)
-            print(line)
-            # Streamlit 화면에도 출력
-            st.write(line)
-    return meds
-
 if submitted:
     st.markdown("## --- 입력된 사용자 정보 ---")
     st.write(f"나이: {나이}세")
@@ -124,6 +103,3 @@ if submitted:
 
     st.markdown("## --- 모델 원본 응답 ---")
     st.code(answer, language="json")
-
-
-    result = answer_to_result(answer)
