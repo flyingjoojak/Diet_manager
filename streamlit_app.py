@@ -27,7 +27,7 @@ client = OpenAI()
 
 # --- Streamlit UI --- #streamlit에 대한 지식이 없어 기존에 colab에서 작성하였던 코드에 GPT의 도움을 받아 작성하였다.
 
-st.title("다이어트 루틴 추천 도우미 🧴")
+st.title("다이어트 루틴 추천 도우미 💪")
 st.write("사용자 정보를 입력하면 AI가 다이어트 루틴을 추천합니다.")
 
 # 입력 폼 (값 이름/구조는 기존 코드와 동일하게 유지)
@@ -103,3 +103,4 @@ if submitted:
 
     st.markdown("## --- 모델 원본 응답 ---")
     st.code(answer, language="json")
+
